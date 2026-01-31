@@ -1,0 +1,69 @@
+import { useState } from 'react';
+import './TestimonialsCarousel.css';
+import { testimonials } from '../data/testimonials';
+
+function TestimonialsCarousel() {
+    const [activeIndex, setActiveIndex] = useState(1); // Start with middle card centered
+
+    const handleDotClick = (index) => {
+        setActiveIndex(index);
+    };
+
+    return (
+        <section className="testimonials-section">
+            <h2 className="testimonials-heading">
+                Hear from the organizations<br />we work with
+            </h2>
+
+            <div className="testimonials-carousel">
+                <div className="carousel-track">
+                    {testimonials.map((testimonial, index) => {
+                        const position = index - activeIndex;
+                        const isActive = index === activeIndex;
+
+                        return (
+                            <div
+                                key={testimonial.id}
+                                className={`testimonial-card ${isActive ? 'active' : ''} position-${position}`}
+                                style={{
+                                    transform: isActive
+                                        ? 'translateX(0)'
+                                        : position < 0
+                                            ? 'translateX(-105%)'
+                                            : 'translateX(105%)',
+                                    top: isActive ? '0' : '-21px',
+                                    opacity: Math.abs(position) > 1 ? 0 : 1,
+                                    zIndex: isActive ? 10 : 1,
+                                    filter: isActive ? 'blur(0)' : 'blur(3px)',
+                                    cursor: isActive ? 'default' : 'pointer'
+                                }}
+                                onClick={() => handleDotClick(index)}
+                            >
+                                <p className="testimonial-quote">{testimonial.quote}</p>
+                                <div className="testimonial-meta">
+                                    <h3 className="testimonial-client">{testimonial.clientName}</h3>
+                                    <p className="testimonial-solution">
+                                        CV Solution: {testimonial.cvSolution}
+                                    </p>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
+            <div className="carousel-pagination">
+                {testimonials.map((_, index) => (
+                    <button
+                        key={index}
+                        className={`pagination-dot ${index === activeIndex ? 'active' : ''}`}
+                        onClick={() => handleDotClick(index)}
+                        aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                ))}
+            </div>
+        </section>
+    );
+}
+
+export default TestimonialsCarousel;

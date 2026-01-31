@@ -1,0 +1,447 @@
+/* ============================================
+   ABOUT SECTION - RESPONSIVE GRID LAYOUT
+   REMOVED: All absolute positioning and fixed offsets
+   USES: CSS Grid with proper responsive units
+   ============================================ */
+
+.about-section {
+    position: relative;
+    width: 100%;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    overflow: hidden;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.about-glow-top-right {
+    position: absolute;
+    top: -200px;
+    right: -400px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.about-glow-ellipse {
+    width: 1303.363px;
+    height: 823.699px;
+    transform: rotate(86.339deg);
+    border-radius: 1303.363px;
+    background: #001D26;
+    filter: blur(200px);
+}
+
+/* Grid layout - collapses to single column on mobile */
+.about-content {
+    max-width: var(--container-xl);
+    /* margin: 0px 13px 126px 52px; */
+    /* padding: 0 var(--spacing-xl); */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+}
+
+/* Left column with text content */
+.about-left {
+    position: relative;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+    /* 48px - was 50px */
+}
+
+/* Main heading - responsive typography */
+.about-heading {
+    font-family: "Stage Grotesk", sans-serif;
+    font-size: 4.1rem;
+    width: 200%;
+    font-weight: 500;
+    line-height: 1.2;
+    /* Relative line-height instead of fixed 60px */
+    color: #FFFFFF;
+    margin: 0;
+    white-space: pre-line;
+    margin-top: 9vh;
+    position: relative;
+    margin-left: 3.6vw;
+}
+
+
+
+/* Text container - FIXED weird positioning */
+.about-text-container {
+    display: flex;
+    left: 23vw;
+    position: relative;
+    flex-direction: column;
+    gap: 2rem;
+    /* Increased spacing */
+    max-width: 100%;
+}
+
+/* Description text - INCREASED SIZE */
+.about-description {
+    font-family: "Stage Grotesk", sans-serif;
+    font-size: 1.35rem;
+    /* Increased from 1rem to ~21.6px */
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-gray);
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* CTA button - INCREASED SIZE */
+.btn-see-how {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    /* Increased padding */
+    background: var(--primary-green);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 0.125rem;
+    font-family: "Stage Grotesk", sans-serif;
+    font-size: 0.875rem;
+    /* Increased from 12px to 14px */
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    box-shadow: 0 0 0.28125rem 0 var(--primary-green);
+    letter-spacing: 0.05em;
+}
+
+.btn-see-how:hover {
+    background: var(--accent-green);
+    box-shadow: 0 0 0.5rem 0 var(--primary-green);
+    /* 8px */
+    transform: translateY(-0.125rem);
+    /* Subtle lift */
+}
+
+/* Right column with images - FIXED positioning issues */
+.about-right {
+    position: relative;
+    left: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    /* 24px */
+    /* REMOVED: left: 100px - broke responsive layout */
+}
+
+/* Image container - responsive sizing */
+.about-image-container {
+    position: relative;
+    top: 135px;
+    left: 156px;
+    width: 72%;
+    aspect-ratio: 355 / 402;
+    overflow: hidden;
+}
+
+/* Main image - proper object-fit */
+.about-image-main {
+    position: relative;
+    top: -61px;
+    width: 112%;
+    height: 102%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center top;
+    object-position: center top;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.about-image-container:hover .about-image-main {
+    transform: scale(1.2);
+    /* Reduced zoom on hover */
+}
+
+/* Abstract image decoration - responsive positioning */
+.about-image-abstract {
+    position: relative;
+    width: 177%;
+    max-width: 18.5rem !important;
+    aspect-ratio: 1;
+    overflow: hidden;
+    /* margin-top: var(--spacing-md); */
+    align-self: flex-start;
+    perspective: 66.5rem;
+    /* bottom: 3vh; */
+    left: 2.9vw;
+}
+
+/* Abstract image with hover effect */
+.abstract-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS - ABOUT SECTION
+   Comprehensive responsive design for all screen sizes
+   ============================================ */
+
+/* Mobile devices (≤640px) */
+@media (max-width: 40rem) {
+
+    /* 640px */
+    .about-section {
+        padding: var(--spacing-xl) 0;
+        /* 32px */
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        /* 48px */
+        padding: 0 var(--spacing-md);
+        /* 16px */
+    }
+
+    .about-left {
+        gap: var(--spacing-xl);
+        left: 0;
+        /* 32px */
+    }
+
+    .about-heading {
+        font-size: 1.75rem;
+        /* 28px */
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .about-text-container {
+        left: 0;
+    }
+
+    .about-description {
+        font-size: 1rem;
+        /* 16px on mobile */
+    }
+
+    .about-right {
+        align-items: center;
+        left: 0;
+    }
+
+    .about-image-container {
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .about-image-abstract {
+        margin-top: var(--spacing-xl);
+    }
+
+    .btn-see-how {
+        width: 100%;
+        max-width: 18.75rem;
+        /* 300px */
+    }
+}
+
+/* Tablets (641px to 1024px) */
+@media (min-width: 40.0625rem) and (max-width: 64rem) {
+
+    /* 641px - 1024px */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-3xl);
+        /* 64px */
+        padding: 0 var(--spacing-xl);
+        /* 32px */
+    }
+
+    .about-left {
+        left: 0;
+    }
+
+    .about-heading {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .about-text-container {
+        left: 0;
+    }
+
+    .about-right {
+        justify-content: center;
+        align-items: center;
+        left: 0;
+    }
+
+    .about-image-container {
+        left: 0;
+        top: 0;
+    }
+}
+
+/* Small laptops (≤1366px) */
+@media (max-width: 85.375rem) {
+
+    /* 1366px */
+    .about-content {
+        gap: clamp(3rem, 8vw, 10rem);
+        /* 48px to 160px */
+        padding: 0 var(--spacing-2xl);
+        /* 48px */
+    }
+
+    .about-heading {
+        font-size: 2.75rem;
+        /* 44px */
+    }
+
+    .about-description {
+        font-size: 1.25rem;
+        /* Keep readable on laptops */
+    }
+}
+
+/* Standard laptops (≤1440px) */
+@media (max-width: 90rem) {
+
+    /* 1440px */
+    .about-content {
+        gap: clamp(4rem, 9vw, 12rem);
+        /* 64px to 192px */
+    }
+}
+
+/* Large screens (≥1920px) */
+@media (min-width: 120rem) {
+
+    /* 1920px */
+    .about-section {
+        padding: var(--spacing-3xl) 0;
+        /* 64px */
+    }
+
+    .about-content {
+        max-width: 100%;
+        gap: clamp(4rem, 8vw, 8rem);
+        /* 64px to 128px */
+        padding: 0 var(--spacing-4xl);
+        /* 80px */
+    }
+
+    .about-heading {
+        font-size: 4.5rem;
+    }
+
+    .about-description {
+        font-size: 1.5rem;
+        /* Larger on big screens */
+        line-height: 1.6;
+    }
+
+    .btn-see-how {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Ultra-wide screens (≥2560px) */
+@media (min-width: 160rem) {
+
+    /* 2560px */
+    .about-content {
+        max-width: 100rem;
+        /* 1600px */
+    }
+}
+
+/* Landscape orientation on tablets */
+@media (min-width: 40.0625rem) and (max-width: 64rem) and (orientation: landscape) {
+    .about-section {
+        padding: var(--spacing-xl) 0;
+        /* 32px - reduced for landscape */
+    }
+
+    .about-content {
+        gap: var(--spacing-xl);
+        /* 32px */
+    }
+}
+
+/* ============================================
+   MAC DEVICE SPECIFIC STYLES (1280px - MacBook Air)
+   Matches Figma design specifications
+   ============================================ */
+@media (min-width: 80rem) and (max-width: 85rem) {
+    /* 1280px - 1360px - MacBook Air and similar */
+
+    .about-section {
+        padding: 10vh 0 15vh;
+        background-image: url('../assets/vector-background.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .about-content {
+        max-width: 80rem;
+        /* 1280px */
+        padding: 0 2.8125rem;
+        /* 45px - matches navbar */
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .about-heading {
+        font-size: 3.125rem;
+        /* 50px - exact Figma spec */
+        line-height: 1.2;
+        margin: 0;
+        margin-left: 0;
+    }
+
+    .about-text-container {
+        left: 0;
+        position: static;
+        margin-top: 2rem;
+    }
+
+    /* Updated for visibility */
+    .about-description {
+        font-size: 1.25rem;
+        /* 20px */
+        line-height: 1.5;
+        color: #d9d9d9;
+    }
+
+    .btn-see-how {
+        font-size: 0.875rem;
+        /* 14px */
+        padding: 0.75rem 1.5rem;
+        letter-spacing: 0.05em;
+    }
+
+    .about-right {
+        position: relative;
+        left: 0;
+        display: flex;
+        justify-content: center;
+    }
+}

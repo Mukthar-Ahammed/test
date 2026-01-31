@@ -1,0 +1,268 @@
+.testimonials-section {
+  background-color: var(--bg-dark);
+  padding: var(--spacing-4xl) var(--spacing-md);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.testimonials-heading {
+  font-family: "Stage Grotesk", sans-serif;
+  font-size: 3.125rem;
+  /* 50px */
+  font-weight: 500;
+  color: var(--text-white);
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+  line-height: 1.2;
+}
+
+.testimonials-carousel {
+  width: 100%;
+  max-width: 75rem;
+  /* 1200px */
+  height: 25rem;
+  /* ~400px */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.carousel-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-card {
+  gap: 23px;
+  /* margin-bottom: 320px; - Removed as it might break layout, user asked for it but typically position absolute handles this differently, keeping width changes */
+  position: absolute;
+  width: 31rem;
+  background-color: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2.75rem 2.75rem 3rem;
+  backdrop-filter: blur(4px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  pointer-events: auto;
+}
+
+
+/* Small cards on sides */
+.testimonial-card:not(.active) {
+  opacity: 0.6;
+}
+
+.testimonial-quote {
+  font-family: "Stage Grotesk", sans-serif;
+  font-size: 16px;
+  /* 16px for all cards */
+  font-weight: 400;
+  color: var(--text-white);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: auto;
+}
+
+.testimonial-client {
+  font-family: "Stage Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--accent-green);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.testimonial-solution {
+  font-family: "Stage Grotesk", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Carousel Pagination */
+.carousel-pagination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-dot {
+  width: 3.5rem;
+  height: 0.3125rem;
+  border: none;
+  border-radius: 999px;
+  /* Rounded pill shape */
+  background-color: #1b2823;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.pagination-dot.active {
+  background-color: var(--accent-green);
+  box-shadow: 0 0 10px rgba(166, 246, 59, 0.4);
+}
+
+.pagination-dot:hover {
+  background-color: #2a3a33;
+}
+
+.pagination-dot.active:hover {
+  background-color: #4fff45;
+}
+
+/* Responsive Design */
+@media (max-width: 80rem) {
+
+  /* 1280px */
+  .testimonials-carousel {
+    max-width: 60rem;
+  }
+
+  .testimonial-card.active,
+  .testimonial-card:not(.active) {
+    width: 35rem;
+    height: 100%;
+  }
+}
+
+@media (max-width: 64rem) {
+
+  /* 1024px */
+  .testimonials-heading {
+    font-size: 2.5rem;
+    /* 40px */
+  }
+
+  .testimonials-carousel {
+    max-width: 50rem;
+    height: 22rem;
+  }
+
+  .testimonial-card.active,
+  .testimonial-card:not(.active) {
+    width: 26rem;
+    padding: 2.5rem;
+    height: 100%;
+  }
+}
+
+@media (max-width: 48rem) {
+
+  /* 768px */
+  .testimonials-section {
+    padding: 8rem var(--spacing-md) var(--spacing-2xl);
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .testimonials-heading {
+    font-size: 2rem;
+    /* 32px */
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .testimonials-carousel {
+    height: 20rem;
+    /* Reduced to match smaller cards */
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .testimonial-card.active,
+  .testimonial-card:not(.active) {
+    width: 90%;
+    max-width: 28rem;
+    height: 18rem;
+    /* Compact height */
+    top: 0 !important;
+    gap: 1.5rem;
+    /* Tighter content */
+    padding: 2rem;
+  }
+
+  .testimonial-card:not(.active) {
+    opacity: 0.4;
+    pointer-events: auto;
+    /* Enable switching by clicking side cards */
+    cursor: pointer;
+  }
+
+  .carousel-pagination {
+    margin-top: 2rem;
+    padding-bottom: var(--spacing-3xl);
+    z-index: 20;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pagination-dot {
+    width: 4rem;
+    /* Slightly wider bars on mobile */
+    height: 0.4rem;
+    background-color: #1b2823;
+    border-radius: 999px;
+  }
+
+  .pagination-dot.active {
+    background-color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(166, 246, 59, 0.6);
+  }
+}
+
+@media (max-width: 30rem) {
+
+  /* 480px */
+  .testimonials-heading {
+    font-size: 1.5rem;
+    /* 24px */
+  }
+
+  .testimonial-card.active,
+  .testimonial-card:not(.active) {
+    width: 95%;
+    padding: 1.5rem;
+    gap: 1.25rem;
+    height: 18rem;
+    /* Reduced from 22rem */
+    top: 0 !important;
+  }
+
+  .testimonial-quote {
+    font-size: 0.875rem;
+    /* 14px */
+  }
+
+  .testimonial-name {
+    font-size: 1.25rem;
+    /* 20px */
+  }
+
+  .testimonial-title {
+    font-size: 0.625rem;
+    /* 10px */
+  }
+}

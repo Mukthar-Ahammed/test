@@ -1,0 +1,571 @@
+.accelerators-section {
+  width: 100%;
+  background: #080808;
+  padding: 143px 0 120px 0;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+  height: auto;
+  overflow: hidden;
+}
+
+.accelerators-hero,
+.case-hero {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 32px;
+}
+
+.accelerators-hero h2,
+.case-hero h2 {
+  font-family: 'Stage Grotesk', sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+}
+
+.accelerators-hero p,
+.case-hero p {
+  font-family: 'Stage Grotesk', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.acc-section-glow {
+  position: absolute;
+  width: 600px;
+  height: 623px;
+  border-radius: 878px;
+  opacity: 0.77;
+  background: linear-gradient(180deg, #001117 0%, #013445 100%);
+  filter: blur(200px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.acc-glow-left {
+  top: 25%;
+  left: -388px;
+  transform: translateY(-50%);
+}
+
+.acc-glow-right {
+  top: 25%;
+  right: -388px;
+  transform: translateY(-50%);
+}
+
+.case-hero {
+  margin-top: 160px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1280px;
+  position: relative;
+  z-index: 1;
+  scroll-margin-top: 120px;
+}
+
+.case-glow {
+  position: absolute;
+  bottom: -400px;
+  right: -1100px;
+  width: 1612px;
+  height: 956px;
+  border-radius: 1212px;
+  background: linear-gradient(180deg, #001117 0%, #013445 100%);
+  filter: blur(200px);
+  opacity: 0.77;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.case-hero p {
+  color: #ffffff;
+  position: relative;
+  top: 15px;
+}
+
+.case-hero .highlight {
+  color: #a6f63b;
+}
+
+.accelerators-grid {
+  max-width: 1280px;
+  margin: 72px auto 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Accelerator cards with FX (ported from provided Tailwind card) */
+.acc-card-wrap {
+  cursor: pointer;
+  transform: translateZ(0);
+  transition: transform 500ms ease;
+  height: 100%;
+}
+
+.acc-card-wrap:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.acc-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(2, 15, 20, 0);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  height: 100%;
+  min-height: 380px;
+  /* Reduced from 450px */
+  display: flex;
+  flex-direction: column;
+}
+
+.acc-card-wrap:hover .acc-card {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.acc-card-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.acc-fx-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+  opacity: 0.4;
+  transition: opacity 500ms ease;
+}
+
+.acc-card-wrap:hover .acc-fx-overlay {
+  opacity: 0.6;
+}
+
+.acc-fx-orb {
+  position: absolute;
+  border-radius: 999px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+  filter: blur(48px);
+  opacity: 0.3;
+  transition: transform 700ms ease, opacity 700ms ease;
+}
+
+.acc-fx-orb-a {
+  width: 192px;
+  height: 192px;
+  left: -80px;
+  bottom: -80px;
+  animation: accBounce 2.2s ease-in-out infinite;
+}
+
+.acc-card-wrap:hover .acc-fx-orb-a {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.acc-fx-orb-b {
+  width: 64px;
+  height: 64px;
+  top: 40px;
+  left: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  filter: blur(18px);
+  animation: accPing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.acc-fx-orb-c {
+  width: 48px;
+  height: 48px;
+  bottom: 64px;
+  right: 64px;
+  background: rgba(255, 255, 255, 0.05);
+  filter: blur(14px);
+  animation: accPing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.acc-fx-orb-d {
+  width: 48px;
+  height: 48px;
+  top: 28px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  filter: blur(22px);
+  opacity: 0.25;
+}
+
+.acc-fx-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  transform: skewX(-12deg) translateX(120%);
+  transition: transform 1000ms ease;
+}
+
+.acc-card-wrap:hover .acc-fx-sweep {
+  transform: skewX(-12deg) translateX(-200%);
+}
+
+.acc-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 32px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.acc-content-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* Icon + beam (beam ONLY on logo circle) */
+.acc-icon-wrap {
+  position: relative;
+  margin-bottom: 24px;
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+}
+
+.acc-icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+}
+
+.acc-icon-ring-ping {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  animation: accPing 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.acc-icon-ring-pulse {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: accPulse 1.6s ease-in-out infinite;
+}
+
+.acc-icon-shell {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: center;
+  transition: transform 500ms ease, box-shadow 500ms ease;
+  overflow: visible;
+}
+
+.acc-card-wrap:hover .acc-icon-shell {
+  transform: scale(1.05);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.acc-icon-rot {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  transition: transform 700ms ease;
+}
+
+.acc-icon-rot img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+/* 
+   New Container for Swapping Title/Text 
+   Uses grid to stack elements on top of each other
+*/
+.acc-text-swap-container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+  min-height: 100px;
+}
+
+.acc-title {
+  font-family: 'Stage Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+  grid-area: 1 / 1;
+  /* Stack on top */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  /* Let clicks pass through */
+}
+
+/* Hide Title on Hover */
+.acc-card-wrap:hover .acc-title {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.acc-desc {
+  max-width: 380px;
+  grid-area: 1 / 1;
+  /* Stack on top */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+/* Show Description on Hover */
+.acc-card-wrap:hover .acc-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.acc-desc p {
+  margin: 0;
+  font-family: 'Stage Grotesk', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(229, 231, 235, 1);
+  /* Brighter on hover by default now */
+}
+
+.acc-bottom-line {
+  width: 230px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+  margin: 0 auto;
+}
+
+.acc-corner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.acc-card-wrap:hover .acc-corner {
+  opacity: 1;
+}
+
+.acc-corner-tl {
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.acc-corner-br {
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 24px;
+  background: linear-gradient(315deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+@keyframes accPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes accPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  75%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes accBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes accBeamSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.case-grid {
+  max-width: 1280px;
+  margin: 48px auto 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.case-card {
+  background: rgba(2, 15, 20, 0);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all -0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.case-image-placeholder {
+  height: 276px;
+  width: 100%;
+  border-radius: 8px;
+  background: rgba(200, 200, 200, 0.9);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.case-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  opacity: 0.9;
+}
+
+.case-card:hover .case-image-placeholder img {
+  transform: scale(1.02);
+  opacity: 1;
+}
+
+.case-card-content {
+  position: relative;
+}
+
+.case-meta {
+  font-family: 'Stage Grotesk', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.case-title {
+  font-family: 'Stage Grotesk', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 1.3;
+  font-weight: 500;
+  padding-right: 40px;
+}
+
+.case-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 300;
+  color: #ffffff;
+  transition: all -0.3s ease;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.case-card:hover .case-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 900px) {
+  .case-hero {
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .accelerators-section {
+    padding: 96px 0 120px 0;
+  }
+
+  .accelerators-grid,
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .accelerator-card {
+    padding: 36px 24px 24px 24px;
+  }
+
+  .accelerators-hero,
+  .case-hero {
+    padding: 0 20px;
+  }
+}
+
+/* ============================================
+   MAC DEVICE SPECIFIC STYLES (1280px - MacBook Air)
+   Matches Figma design specifications
+   ============================================ */
+@media (min-width: 80rem) and (max-width: 85rem) {
+  /* 1280px - 1360px - MacBook Air and similar */
+
+  .accelerators-section {
+    width: 100%;
+    background: #080808;
+    padding: 101px 0 0px 0;
+  }
+}
