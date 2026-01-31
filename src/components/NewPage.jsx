@@ -10,7 +10,7 @@ import TestimonialsCarousel from './TestimonialsCarousel'
 import CTASection from './CTASection'
 import Footer from './Footer'
 import aboutLogo from '../assets/about logo .png'
-import aboutLeft from '../assets/ Images/Web Images/HOMEPAGE/Top Right.jpg'
+import aboutLeft from '../assets/Images/Web Images/HOMEPAGE/Top Right.jpg'
 
 function AboutGlow() {
   return (
